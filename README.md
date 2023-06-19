@@ -1,4 +1,4 @@
-# trilhaapp
+# FARMAFAST
 
 A new Flutter project.
 
