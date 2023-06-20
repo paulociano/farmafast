@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/receita_page.dart';
 
 class ServicosPage extends StatefulWidget {
   const ServicosPage({super.key});
@@ -29,21 +30,23 @@ class _ServicosPageState extends State<ServicosPage> {
           ),
           Card(
             child: ListTile(
-              leading: const Icon(
-                Icons.edit_document,
-                color: Colors.black,
-              ),
-              title: const Text(
-                'Envio de Receita Digital',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              onTap: () {
-                // Ação ao clicar no menu
-              },
-            ),
+                leading: const Icon(
+                  Icons.edit_document,
+                  color: Colors.black,
+                ),
+                title: const Text(
+                  'Envio de Receita Digital',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReceitaMainPage()));
+                }),
           ),
           Card(
             child: ListTile(

@@ -19,6 +19,7 @@ class _NewUserPageState extends State<NewUserPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         body: SingleChildScrollView(
           child: ConstrainedBox(
