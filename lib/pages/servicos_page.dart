@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/alarmes_page.dart';
+import 'package:trilhaapp/pages/doacoes_page.dart';
 import 'package:trilhaapp/pages/receita_page.dart';
 
 class ServicosPage extends StatefulWidget {
@@ -62,7 +64,10 @@ class _ServicosPageState extends State<ServicosPage> {
                     fontWeight: FontWeight.w600),
               ),
               onTap: () {
-                // Ação ao clicar no menu
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AlarmePage()));
               },
             ),
           ),
@@ -98,7 +103,10 @@ class _ServicosPageState extends State<ServicosPage> {
                     fontWeight: FontWeight.w600),
               ),
               onTap: () {
-                // Ação ao clicar no menu
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DoacaoPage()));
               },
             ),
           ),

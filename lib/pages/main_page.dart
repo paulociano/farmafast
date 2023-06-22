@@ -137,12 +137,6 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
             Card(
               child: InkWell(
                 onTap: () {
@@ -205,7 +199,25 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
+            ),
+            Card(
+              child: InkWell(
+                onTap: () {
+                  // Lógica do botão
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/banner2.jpg'))),
+                  width: 400,
+                  height: 80,
+                  padding: const EdgeInsets.all(0),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             const Text(
               'Remédios Mais Vendidos',
