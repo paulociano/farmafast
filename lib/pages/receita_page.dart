@@ -1,5 +1,5 @@
+import 'package:farmafast/pages/receita_modal.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/receita_modal.dart';
 
 class ReceitaMainPage extends StatefulWidget {
   const ReceitaMainPage({super.key});

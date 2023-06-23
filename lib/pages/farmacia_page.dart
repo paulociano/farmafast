@@ -1,6 +1,6 @@
+import 'package:farmafast/pages/remedio_page.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/remedio_page.dart';
 
 class FarmaciaPage extends StatefulWidget {
   const FarmaciaPage({super.key});

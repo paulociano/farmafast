@@ -1,7 +1,7 @@
+import 'package:farmafast/pages/alarmes_page.dart';
+import 'package:farmafast/pages/doacoes_page.dart';
+import 'package:farmafast/pages/receita_page.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/alarmes_page.dart';
-import 'package:trilhaapp/pages/doacoes_page.dart';
-import 'package:trilhaapp/pages/receita_page.dart';
 
 class ServicosPage extends StatefulWidget {
   const ServicosPage({super.key});

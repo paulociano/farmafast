@@ -1,7 +1,7 @@
+import 'package:farmafast/pages/pedidos_page.dart';
+import 'package:farmafast/pages/servicos_page.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/login_page.dart';
-import 'package:trilhaapp/pages/pedidos_page.dart';
-import 'package:trilhaapp/pages/servicos_page.dart';
+import 'login_page.dart';
 import 'main_page.dart';
 
 int _currentIndex = 0;

@@ -1,5 +1,5 @@
+import 'package:farmafast/pages/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/login_page.dart';
 
 class NewUserPage extends StatefulWidget {
   const NewUserPage({super.key});

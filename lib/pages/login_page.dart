@@ -1,6 +1,6 @@
+import 'package:farmafast/pages/general_page.dart';
+import 'package:farmafast/pages/newuser_page.dart';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/general_page.dart';
-import 'package:trilhaapp/pages/newuser_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
