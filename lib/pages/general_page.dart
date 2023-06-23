@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/pedidos_page.dart';
 import 'package:trilhaapp/pages/servicos_page.dart';
 import 'main_page.dart';
 
@@ -7,7 +8,7 @@ int _currentIndex = 0;
 
 final List<Widget> _pages = [
   const MainPage(),
-  const MainPage(),
+  const PedidosPage(),
   const ServicosPage()
 ];
 
