@@ -1,3 +1,4 @@
+import 'package:farmafast/buttons/imgsource_button.dart';
 import 'package:flutter/material.dart';
 
 class ReceitaModal extends StatefulWidget {
@@ -79,11 +80,7 @@ class _ReceitaModalState extends State<ReceitaModal> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color.fromARGB(255, 206, 0, 49),
-        child: const Icon(Icons.add_a_photo),
-      ),
+      floatingActionButton: const ImgSourceButton(),
     );
   }
 }
