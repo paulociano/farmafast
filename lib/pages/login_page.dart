@@ -66,9 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                     onChanged: (value) {
                       debugPrint(value);
                     },
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black, fontSize: 20),
                     decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 0),
+                        contentPadding: EdgeInsets.only(top: -3),
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),
@@ -97,9 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                     onChanged: (value) {
                       debugPrint(value);
                     },
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black, fontSize: 20),
                     decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(top: 0),
+                        contentPadding: const EdgeInsets.only(top: -3),
                         enabledBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),

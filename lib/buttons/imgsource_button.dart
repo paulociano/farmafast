@@ -1,5 +1,12 @@
+import 'dart:io';
+
+import 'package:camera_camera/camera_camera.dart';
 import 'package:farmafast/buttons/imgsource_delegate.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../pages/preview_page.dart';
 
 class ImgSourceButton extends StatefulWidget {
   const ImgSourceButton({
@@ -14,6 +21,26 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
   final actionButtonColor = Colors.white;
   late AnimationController animation;
   final menuIsOpen = ValueNotifier<bool>(false);
+  late File arquivo;
+  final picker = ImagePicker();
+
+  Future getFileFromGallery() async {
+    final file = await picker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      setState(() {
+        arquivo = File(file.path);
+      });
+    }
+  }
+
+  showPreview(file) async {
+    file = await Get.to(() => PreviewPage(file: file));
+
+    if (file != null) {
+      setState(() => arquivo = file);
+      Get.back();
+    }
+  }
 
   @override
   void initState() {
@@ -51,7 +78,9 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
             )),
         FloatingActionButton(
             heroTag: "btnimgpick",
-            onPressed: () {},
+            onPressed: () {
+              getFileFromGallery();
+            },
             backgroundColor: actionButtonColor,
             child: const Icon(
               Icons.attach_file,
@@ -59,7 +88,9 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
             )),
         FloatingActionButton(
             heroTag: "btnimgcam",
-            onPressed: () {},
+            onPressed: () => Get.to(
+                  () => CameraCamera(onFile: (file) => showPreview(file)),
+                ),
             backgroundColor: actionButtonColor,
             child: const Icon(Icons.camera_alt,
                 color: Color.fromARGB(255, 206, 0, 49))),
