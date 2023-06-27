@@ -170,20 +170,21 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: TextButton(
                         onPressed: () {
-                          if (emailController.text.trim() == "adm" &&
-                              senhaController.text.trim() == "123") {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const GeneralPage()));
-                          } else {
+                          /*if (emailController.text.trim() == "adm" &&
+                              senhaController.text.trim() == "123") {*/
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GeneralPage()));
+                        },
+                        /* else {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                               content: Text("Erro ao efetuar o login"),
                               backgroundColor: Color.fromARGB(255, 206, 0, 49),
                             ));
-                          }
-                        },
+                          }*/
+
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(

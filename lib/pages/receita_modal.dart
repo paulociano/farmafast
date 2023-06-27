@@ -81,9 +81,9 @@ class _ReceitaModalState extends State<ReceitaModal> {
               'Preview:',
               style: TextStyle(fontSize: 20),
             ),
-            if (repositorioReceitas.receita.toString() != '')
+            if (repositorioReceitas.receita != '')
               Image(
-                image: AssetImage(repositorioReceitas.receita.toString()),
+                image: AssetImage(repositorioReceitas.receita),
                 width: 200,
                 height: 300,
               ),

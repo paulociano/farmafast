@@ -36,7 +36,7 @@ class PreviewPage extends StatelessWidget {
                             size: 30,
                           ),
                           onPressed: () {
-                            repositorioReceitas.setImage(file.path);
+                            repositorioReceitas.setImage(file.path.toString());
                             Get.back(result: file);
                           },
                         ),

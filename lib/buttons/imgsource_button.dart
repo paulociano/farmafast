@@ -1,12 +1,12 @@
 import 'dart:io';
-
 import 'package:camera_camera/camera_camera.dart';
 import 'package:farmafast/buttons/imgsource_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:provider/provider.dart';
 import '../pages/preview_page.dart';
+import '../repositories/receitas_repository.dart';
 
 class ImgSourceButton extends StatefulWidget {
   const ImgSourceButton({
@@ -18,28 +18,25 @@ class ImgSourceButton extends StatefulWidget {
 
 class _ImgSourceButtonState extends State<ImgSourceButton>
     with SingleTickerProviderStateMixin {
+  late ReceitasRepository repositorioReceitas;
   final actionButtonColor = Colors.white;
   late AnimationController animation;
   final menuIsOpen = ValueNotifier<bool>(false);
-  late File arquivo;
+  late String arquivo;
   final picker = ImagePicker();
 
   Future getFileFromGallery() async {
     final file = await picker.pickImage(source: ImageSource.gallery);
     if (file != null) {
       setState(() {
-        arquivo = File(file.path);
+        arquivo = File(file.path).toString();
+        repositorioReceitas.setImage(arquivo);
       });
     }
   }
 
   showPreview(file) async {
     file = await Get.to(() => PreviewPage(file: file));
-
-    if (file != null) {
-      setState(() => arquivo = file);
-      Get.back();
-    }
   }
 
   @override
@@ -62,6 +59,7 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
 
   @override
   Widget build(BuildContext context) {
+    repositorioReceitas = Provider.of<ReceitasRepository>(context);
     return Flow(
       clipBehavior: Clip.none,
       delegate: ImgSourceDelegate(animation: animation),
