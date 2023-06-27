@@ -20,11 +20,12 @@ class _ServicosPageState extends State<ServicosPage> {
             width: double.infinity,
             child: Card(
               child: ListTile(
-                tileColor: Color.fromARGB(255, 206, 0, 49),
+                tileColor: Colors.white,
                 title: Text(
                   'SERVIÇOS',
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w700),
+                      color: Color.fromARGB(255, 206, 0, 49),
+                      fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
                 ),
               ),

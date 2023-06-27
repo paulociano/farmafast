@@ -55,11 +55,12 @@ class _PedidosPageState extends State<PedidosPage> {
               width: double.infinity,
               child: Card(
                 child: ListTile(
-                  tileColor: Color.fromARGB(255, 206, 0, 49),
+                  tileColor: Colors.white,
                   title: Text(
                     'MEUS PEDIDOS',
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700),
+                        color: Color.fromARGB(255, 206, 0, 49),
+                        fontWeight: FontWeight.w700),
                     textAlign: TextAlign.center,
                   ),
                 ),

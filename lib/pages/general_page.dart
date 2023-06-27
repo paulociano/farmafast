@@ -4,14 +4,6 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'main_page.dart';
 
-int _currentIndex = 0;
-
-final List<Widget> _pages = [
-  const MainPage(),
-  const PedidosPage(),
-  const ServicosPage()
-];
-
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
 
@@ -20,6 +12,21 @@ class GeneralPage extends StatefulWidget {
 }
 
 class _GeneralPageState extends State<GeneralPage> {
+  int paginaAtual = 0;
+  late PageController page;
+
+  @override
+  void initState() {
+    super.initState();
+    page = PageController(initialPage: paginaAtual);
+  }
+
+  setPaginaAtual(pagina) {
+    setState(() {
+      paginaAtual = pagina;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +34,9 @@ class _GeneralPageState extends State<GeneralPage> {
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              icon: const Icon(Icons.people), // Ícone do drawer
+              icon: const Icon(
+                Icons.people,
+              ), // Ícone do drawer
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
@@ -35,12 +44,12 @@ class _GeneralPageState extends State<GeneralPage> {
           },
         ),
         toolbarHeight: 80,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 206, 0, 49),
         centerTitle: true,
         title: Image.asset(
-          'assets/images/logofarmafast.png',
+          'assets/images/logofarmafastbranco.png',
           height: 40,
         ),
         actions: [
@@ -63,21 +72,26 @@ class _GeneralPageState extends State<GeneralPage> {
           ],
         ),
       ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
+      body: PageView(
+        onPageChanged: setPaginaAtual,
+        controller: page,
+        children: const [
+          MainPage(),
+          PedidosPage(),
+          ServicosPage(),
+        ],
       ),
       bottomNavigationBar: SizedBox(
         height: 80,
         child: BottomNavigationBar(
+          currentIndex: paginaAtual,
           backgroundColor: const Color.fromARGB(255, 206, 0, 49),
           selectedItemColor: Colors.white,
           selectedIconTheme: const IconThemeData(color: Colors.white),
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
+          onTap: (pagina) {
+            page.animateToPage(pagina,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.ease);
           },
           items: const [
             BottomNavigationBarItem(

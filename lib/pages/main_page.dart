@@ -102,6 +102,9 @@ class _MainPageState extends State<MainPage> {
         resizeToAvoidBottomInset: false,
         body: Column(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             FractionallySizedBox(
               widthFactor: 0.8,
               child: Container(
@@ -119,6 +122,9 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Card(
               child: InkWell(
@@ -146,7 +152,9 @@ class _MainPageState extends State<MainPage> {
                         onPressed: () {
                           // Lógica do botão dentro do banner
                         },
-                        child: const Text('SAIBA MAIS'),
+                        child: const Text(
+                          'SAIBA MAIS',
+                        ),
                       ),
                     ],
                   ),
@@ -200,7 +208,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Text(
               'Remédios Mais Vendidos',
@@ -210,7 +218,7 @@ class _MainPageState extends State<MainPage> {
                   fontWeight: FontWeight.w800),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             SizedBox(
               height: 100,
