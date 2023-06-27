@@ -31,7 +31,7 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
       setState(() {
         arquivo = File(file.path);
         repositorioReceitas.setImage(arquivo);
-        print(file.path.toString());
+        //print(file.path.toString());
       });
     }
   }

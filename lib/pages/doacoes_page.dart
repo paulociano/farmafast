@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../classes/instituicao_class.dart';
+
 class DoacaoPage extends StatefulWidget {
   const DoacaoPage({super.key});
 
@@ -8,6 +10,8 @@ class DoacaoPage extends StatefulWidget {
 }
 
 class _DoacaoPageState extends State<DoacaoPage> {
+  List<instituicao> instituicoes = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

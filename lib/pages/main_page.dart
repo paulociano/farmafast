@@ -2,6 +2,7 @@ import 'package:farmafast/pages/farmacia_page.dart';
 import 'package:farmafast/pages/remedio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -11,109 +12,91 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  List<Widget> farmacias = [
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const FarmaciaPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/farmacia1.png'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const FarmaciaPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/farmacia2.jpg'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const FarmaciaPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/farmacia3.png'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+  ];
+  List<Widget> remedios = [
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const RemedioPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/remedio1.jpg'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const RemedioPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/remedio2.jpg'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+    Card(
+        child: InkWell(
+            onTap: () {
+              Get.to(() => const RemedioPage());
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/remedio3.jpg'))),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(0),
+            ))),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    List<Widget> farmacias = [
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FarmaciaPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/farmacia1.png'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FarmaciaPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/farmacia2.jpg'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FarmaciaPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/farmacia3.png'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-    ];
-    List<Widget> remedios = [
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RemedioPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/remedio1.jpg'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RemedioPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/remedio2.jpg'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-      Card(
-          child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RemedioPage()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/remedio3.jpg'))),
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(0),
-              ))),
-    ];
-
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
