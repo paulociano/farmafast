@@ -81,9 +81,9 @@ class _ReceitaModalState extends State<ReceitaModal> {
               'Preview:',
               style: TextStyle(fontSize: 20),
             ),
-            if (repositorioReceitas.receita != '')
+            if (repositorioReceitas.receita.path != '')
               Image(
-                image: AssetImage(repositorioReceitas.receita),
+                image: AssetImage(repositorioReceitas.receita.path.toString()),
                 width: 200,
                 height: 300,
               ),
@@ -96,7 +96,6 @@ class _ReceitaModalState extends State<ReceitaModal> {
                   backgroundColor: MaterialStateProperty.all<Color>(
                       const Color.fromARGB(255, 206, 0, 49))),
               onPressed: () {
-                repositorioReceitas.setImage('');
                 Get.back();
               },
               child: const Text('SALVAR'),

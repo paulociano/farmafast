@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ReceitasRepository extends ChangeNotifier {
-  String _receita = '';
+  File _receita = File('');
 
-  String get receita => _receita;
+  File get receita => _receita;
 
-  void setImage(String receita) {
+  void setImage(File receita) {
     _receita = receita;
     notifyListeners();
   }

@@ -6,12 +6,12 @@ import 'package:provider/provider.dart';
 
 class PreviewPage extends StatelessWidget {
   final File file;
-  PreviewPage({super.key, required this.file});
-  late ReceitasRepository repositorioReceitas;
+  const PreviewPage({super.key, required this.file});
 
   @override
   Widget build(BuildContext context) {
-    repositorioReceitas = Provider.of<ReceitasRepository>(context);
+    ReceitasRepository repositorioReceitas =
+        Provider.of<ReceitasRepository>(context);
     return Scaffold(
       body: Row(
         children: [
@@ -36,7 +36,8 @@ class PreviewPage extends StatelessWidget {
                             size: 30,
                           ),
                           onPressed: () {
-                            repositorioReceitas.setImage(file.path.toString());
+                            repositorioReceitas.setImage(file);
+                            print(file.path.toString());
                             Get.back(result: file);
                           },
                         ),

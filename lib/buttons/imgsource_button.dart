@@ -22,15 +22,16 @@ class _ImgSourceButtonState extends State<ImgSourceButton>
   final actionButtonColor = Colors.white;
   late AnimationController animation;
   final menuIsOpen = ValueNotifier<bool>(false);
-  late String arquivo;
+  late File arquivo;
   final picker = ImagePicker();
 
   Future getFileFromGallery() async {
     final file = await picker.pickImage(source: ImageSource.gallery);
     if (file != null) {
       setState(() {
-        arquivo = File(file.path).toString();
+        arquivo = File(file.path);
         repositorioReceitas.setImage(arquivo);
+        print(file.path.toString());
       });
     }
   }
