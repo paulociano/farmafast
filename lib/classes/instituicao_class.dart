@@ -1,1 +1,1 @@
-class instituicao {}
+class Instituicao {}

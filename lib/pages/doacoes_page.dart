@@ -10,7 +10,7 @@ class DoacaoPage extends StatefulWidget {
 }
 
 class _DoacaoPageState extends State<DoacaoPage> {
-  List<instituicao> instituicoes = [];
+  List<Instituicao> instituicoes = [];
 
   @override
   Widget build(BuildContext context) {
