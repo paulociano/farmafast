@@ -48,6 +48,8 @@ dependencies:
   date_field: ^3.0.3
   get: ^4.6.5
   provider: ^5.0.0
+  page_transition: ^2.0.9
+  curved_labeled_navigation_bar: ^2.0.2
   
 
 dev_dependencies:

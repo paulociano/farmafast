@@ -1,6 +1,7 @@
 import 'package:farmafast/pages/general_page.dart';
 import 'package:farmafast/pages/newuser_page.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -44,17 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 const SizedBox(
-                  height: 50,
-                ),
-                const Text(
-                  "Login",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black),
-                ),
-                const SizedBox(
-                  height: 40,
+                  height: 60,
                 ),
                 Container(
                   width: double.infinity,
@@ -68,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     style: const TextStyle(color: Colors.black, fontSize: 20),
                     decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(top: -3),
+                        contentPadding: EdgeInsets.all(8),
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),
@@ -76,7 +67,8 @@ class _LoginPageState extends State<LoginPage> {
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),
                         hintText: "Email",
-                        hintStyle: TextStyle(color: Colors.black),
+                        hintStyle: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
                         prefixIcon: Icon(
                           Icons.person,
                           color: Color.fromARGB(255, 206, 0, 49),
@@ -99,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     style: const TextStyle(color: Colors.black, fontSize: 20),
                     decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(top: -3),
+                        contentPadding: const EdgeInsets.all(8),
                         enabledBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),
@@ -107,7 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 206, 0, 49))),
                         hintText: "Senha",
-                        hintStyle: const TextStyle(color: Colors.black),
+                        hintStyle: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: Color.fromARGB(255, 206, 0, 49),
@@ -173,9 +166,14 @@ class _LoginPageState extends State<LoginPage> {
                           /*if (emailController.text.trim() == "adm" &&
                               senhaController.text.trim() == "123") {*/
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const GeneralPage()));
+                            context,
+                            PageTransition(
+                              child: const GeneralPage(),
+                              type: PageTransitionType.scale,
+                              alignment: Alignment.center,
+                              duration: const Duration(milliseconds: 600),
+                            ),
+                          );
                         },
                         /* else {
                             ScaffoldMessenger.of(context)
@@ -188,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                                    borderRadius: BorderRadius.circular(20))),
                             backgroundColor: MaterialStateProperty.all(
                                 const Color.fromARGB(255, 206, 0, 49))),
                         child: const Text(
@@ -196,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
-                              fontWeight: FontWeight.w200),
+                              fontWeight: FontWeight.w600),
                         )),
                   ),
                 ),

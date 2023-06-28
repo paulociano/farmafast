@@ -1,5 +1,6 @@
 import 'package:farmafast/pages/receita_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ReceitaMainPage extends StatefulWidget {
   const ReceitaMainPage({super.key});
@@ -29,9 +30,14 @@ class _ReceitaMainPageState extends State<ReceitaMainPage> {
             width: double.infinity,
             child: Card(
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
                 tileColor: Color.fromARGB(255, 206, 0, 49),
                 title: Text(
-                  'RECEITAS',
+                  'MINHAS RECEITAS',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
@@ -45,9 +51,13 @@ class _ReceitaMainPageState extends State<ReceitaMainPage> {
           TextButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ReceitaModal()));
+                  context,
+                  PageTransition(
+                    child: const ReceitaModal(),
+                    type: PageTransitionType.bottomToTop,
+                    duration: const Duration(milliseconds: 600),
+                  ),
+                );
               },
               child: const Text(
                 '+ Adicionar Nova Receita',

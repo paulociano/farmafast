@@ -52,19 +52,7 @@ class _PedidosPageState extends State<PedidosPage> {
         child: Column(
           children: [
             const SizedBox(
-              width: double.infinity,
-              child: Card(
-                child: ListTile(
-                  tileColor: Colors.white,
-                  title: Text(
-                    'MEUS PEDIDOS',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 206, 0, 49),
-                        fontWeight: FontWeight.w700),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(10),

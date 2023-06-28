@@ -1,3 +1,5 @@
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:farmafast/pages/pedidos_page.dart';
 import 'package:farmafast/pages/servicos_page.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,12 @@ class _GeneralPageState extends State<GeneralPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        )),
+        toolbarHeight: 80,
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -43,7 +51,6 @@ class _GeneralPageState extends State<GeneralPage> {
             );
           },
         ),
-        toolbarHeight: 80,
         iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
         backgroundColor: const Color.fromARGB(255, 206, 0, 49),
@@ -62,6 +69,12 @@ class _GeneralPageState extends State<GeneralPage> {
       drawer: Drawer(
         child: Column(
           children: [
+            const SizedBox(
+              height: 80,
+            ),
+            const CircleAvatar(
+              radius: 60,
+            ),
             TextButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
@@ -81,33 +94,44 @@ class _GeneralPageState extends State<GeneralPage> {
           ServicosPage(),
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: BottomNavigationBar(
-          currentIndex: paginaAtual,
-          backgroundColor: const Color.fromARGB(255, 206, 0, 49),
-          selectedItemColor: Colors.white,
-          selectedIconTheme: const IconThemeData(color: Colors.white),
-          onTap: (pagina) {
-            page.animateToPage(pagina,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.ease);
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 50),
+      bottomNavigationBar: CurvedNavigationBar(
+        index: paginaAtual,
+        animationCurve: Curves.ease,
+        animationDuration: const Duration(milliseconds: 400),
+        iconPadding: 10,
+        color: const Color.fromARGB(255, 206, 0, 49),
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: const Color.fromARGB(255, 206, 0, 49),
+        onTap: (pagina) {
+          page.animateToPage(pagina,
+              duration: const Duration(milliseconds: 400), curve: Curves.ease);
+        },
+        items: const [
+          CurvedNavigationBarItem(
+              child: Icon(
+                Icons.home,
+                size: 30,
+                color: Colors.white,
+              ),
               label: 'Início',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list, size: 50),
+              labelStyle: TextStyle(color: Colors.white)),
+          CurvedNavigationBarItem(
+              child: Icon(
+                Icons.list,
+                size: 30,
+                color: Colors.white,
+              ),
               label: 'Pedidos',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.medical_services, size: 50),
+              labelStyle: TextStyle(color: Colors.white)),
+          CurvedNavigationBarItem(
+              child: Icon(
+                Icons.medical_services,
+                size: 30,
+                color: Colors.white,
+              ),
               label: 'Serviços',
-            ),
-          ],
-        ),
+              labelStyle: TextStyle(color: Colors.white)),
+        ],
       ),
     );
   }

@@ -33,6 +33,11 @@ class _DoacaoPageState extends State<DoacaoPage> {
             width: double.infinity,
             child: Card(
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
                 tileColor: Color.fromARGB(255, 206, 0, 49),
                 title: Text(
                   'DOAÇÃO DE REMÉDIOS',

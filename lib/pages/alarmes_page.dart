@@ -1,4 +1,6 @@
+import 'package:farmafast/pages/general_page.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AlarmePage extends StatefulWidget {
   const AlarmePage({super.key});
@@ -24,12 +26,17 @@ class _AlarmePageState extends State<AlarmePage> {
           height: 40,
         ),
       ),
-      body: Column(
+      body: const Column(
         children: [
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: Card(
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
                 tileColor: Color.fromARGB(255, 206, 0, 49),
                 title: Text(
                   'LEMBRETES DE REMÉDIOS',
@@ -40,9 +47,21 @@ class _AlarmePageState extends State<AlarmePage> {
               ),
             ),
           ),
-          const Spacer(),
-          ListView(),
+          SizedBox(
+            height: 20,
+          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          PageTransition(
+            child: const GeneralPage(),
+            type: PageTransitionType.bottomToTop,
+            duration: const Duration(milliseconds: 600),
+          );
+        },
+        backgroundColor: const Color.fromARGB(255, 206, 0, 49),
+        child: const Icon(Icons.alarm_add),
       ),
     );
   }

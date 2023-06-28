@@ -2,6 +2,7 @@ import 'package:farmafast/pages/alarmes_page.dart';
 import 'package:farmafast/pages/doacoes_page.dart';
 import 'package:farmafast/pages/receita_page.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ServicosPage extends StatefulWidget {
   const ServicosPage({super.key});
@@ -14,122 +15,185 @@ class _ServicosPageState extends State<ServicosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          const SizedBox(
-            width: double.infinity,
-            child: Card(
-              child: ListTile(
-                tileColor: Colors.white,
-                title: Text(
-                  'SERVIÇOS',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 206, 0, 49),
-                      fontWeight: FontWeight.w700),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 20.0,
+              mainAxisSpacing: 20.0,
             ),
-          ),
-          Card(
-            child: ListTile(
-                leading: const Icon(
-                  Icons.edit_document,
-                  color: Colors.black,
-                ),
-                title: const Text(
-                  'Envio de Receita Digital',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600),
-                ),
-                onTap: () {
-                  Navigator.push(
+            itemCount: 5,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const ReceitaMainPage()));
-                }),
-          ),
-          Card(
-            child: ListTile(
-              leading: const Icon(
-                Icons.alarm,
-                color: Colors.black,
-              ),
-              title: const Text(
-                'Lembretes de Remédios',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AlarmePage()));
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: const Icon(
-                Icons.announcement,
-                color: Colors.black,
-              ),
-              title: const Text(
-                'Orientações',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              onTap: () {
-                // Ação ao clicar no menu
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: const Icon(
-                Icons.medication_rounded,
-                color: Colors.black,
-              ),
-              title: const Text(
-                'Doações de Remédios',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const DoacaoPage()));
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: const Icon(
-                Icons.support_agent,
-                color: Colors.black,
-              ),
-              title: const Text(
-                'Suporte',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              onTap: () {
-                // Ação ao clicar no menu
-              },
-            ),
-          ),
-        ],
+                      PageTransition(
+                        child: const ReceitaMainPage(),
+                        type: PageTransitionType.rightToLeft,
+                        duration: const Duration(milliseconds: 600),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.lightBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 3,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/envioreceita.png'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Minhas Receitas',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              } else if (index == 1) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        child: const AlarmePage(),
+                        type: PageTransitionType.rightToLeft,
+                        duration: const Duration(milliseconds: 600),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 3,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/despertador.png'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Lembretes de Remédios',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              } else if (index == 2) {
+                return InkWell(
+                  onTap: () {},
+                  child: Card(
+                    color: Colors.lightGreen,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 3,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/orientacao.png'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Orientações',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              } else if (index == 3) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        child: const DoacaoPage(),
+                        type: PageTransitionType.rightToLeft,
+                        duration: const Duration(milliseconds: 600),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 3,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/doacao.png'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Doação de Remédios',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              } else {
+                return InkWell(
+                  onTap: () {},
+                  child: Card(
+                    color: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 3,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/suporte.png'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Suporte',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }
+            }),
       ),
     );
   }
