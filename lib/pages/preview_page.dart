@@ -37,8 +37,8 @@ class PreviewPage extends StatelessWidget {
                           ),
                           onPressed: () {
                             repositorioReceitas.setImage(file);
-                            //print(file.path.toString());
-                            Get.back(result: file);
+                            Get.back();
+                            Get.back();
                           },
                         ),
                       ),
