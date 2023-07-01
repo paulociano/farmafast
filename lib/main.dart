@@ -5,6 +5,7 @@ import 'my_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(ChangeNotifierProvider(
     create: (context) => ReceitasRepository(),
     child: const MyApp(),

@@ -37,11 +37,12 @@ class _AlarmePageState extends State<AlarmePage> {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 )),
-                tileColor: Color.fromARGB(255, 206, 0, 49),
+                tileColor: Colors.white,
                 title: Text(
                   'LEMBRETES DE REMÉDIOS',
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w700),
+                      color: Color.fromARGB(255, 206, 0, 49),
+                      fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -57,7 +58,7 @@ class _AlarmePageState extends State<AlarmePage> {
           PageTransition(
             child: const GeneralPage(),
             type: PageTransitionType.bottomToTop,
-            duration: const Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 400),
           );
         },
         backgroundColor: const Color.fromARGB(255, 206, 0, 49),

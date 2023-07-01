@@ -29,13 +29,13 @@ class _ReceitaMainPageState extends State<ReceitaMainPage> {
           const SizedBox(
             width: double.infinity,
             child: Card(
+              color: Color.fromARGB(255, 206, 0, 49),
               child: ListTile(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 )),
-                tileColor: Color.fromARGB(255, 206, 0, 49),
                 title: Text(
                   'MINHAS RECEITAS',
                   style: TextStyle(

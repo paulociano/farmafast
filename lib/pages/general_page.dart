@@ -1,10 +1,11 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:farmafast/pages/config_page.dart';
 import 'package:farmafast/pages/pedidos_page.dart';
 import 'package:farmafast/pages/servicos_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
-import 'main_page.dart';
+import 'home_page.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
@@ -73,15 +74,57 @@ class _GeneralPageState extends State<GeneralPage> {
               height: 80,
             ),
             const CircleAvatar(
+              backgroundColor: Color.fromARGB(255, 206, 0, 49),
               radius: 60,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => const ConfigPage()));
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
+                  Text(
+                    'CONFIGURAÇÕES',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              child: const Text('SAIR'),
-            )
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.logout,
+                    color: Colors.black,
+                  ),
+                  Text(
+                    'SAIR',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -19,11 +19,11 @@ class _ServicosPageState extends State<ServicosPage> {
         padding: const EdgeInsets.all(5.0),
         child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 20.0,
-              mainAxisSpacing: 20.0,
+              crossAxisCount: 3,
+              crossAxisSpacing: 5.0,
+              mainAxisSpacing: 5,
             ),
-            itemCount: 5,
+            itemCount: 4,
             itemBuilder: (BuildContext context, int index) {
               if (index == 0) {
                 return InkWell(
@@ -33,7 +33,7 @@ class _ServicosPageState extends State<ServicosPage> {
                       PageTransition(
                         child: const ReceitaMainPage(),
                         type: PageTransitionType.rightToLeft,
-                        duration: const Duration(milliseconds: 600),
+                        duration: const Duration(milliseconds: 400),
                       ),
                     );
                   },
@@ -70,7 +70,7 @@ class _ServicosPageState extends State<ServicosPage> {
                       PageTransition(
                         child: const AlarmePage(),
                         type: PageTransitionType.rightToLeft,
-                        duration: const Duration(milliseconds: 600),
+                        duration: const Duration(milliseconds: 400),
                       ),
                     );
                   },
@@ -101,41 +101,13 @@ class _ServicosPageState extends State<ServicosPage> {
                 );
               } else if (index == 2) {
                 return InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.lightGreen,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    elevation: 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/orientacao.png'),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Orientações',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              } else if (index == 3) {
-                return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       PageTransition(
                         child: const DoacaoPage(),
                         type: PageTransitionType.rightToLeft,
-                        duration: const Duration(milliseconds: 600),
+                        duration: const Duration(milliseconds: 400),
                       ),
                     );
                   },

@@ -2,7 +2,7 @@ import 'package:farmafast/pages/farmacia_page.dart';
 import 'package:farmafast/pages/remedio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -16,12 +16,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const FarmaciaPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const FarmaciaPage());
             },
             child: Container(
               decoration: const BoxDecoration(
@@ -34,12 +29,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const FarmaciaPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const FarmaciaPage());
             },
             child: Container(
               decoration: const BoxDecoration(
@@ -52,12 +42,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const FarmaciaPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const FarmaciaPage());
             },
             child: Container(
               decoration: const BoxDecoration(
@@ -72,12 +57,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const RemedioPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const RemedioPage());
             },
             child: Container(
               decoration: const BoxDecoration(
@@ -90,12 +70,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const RemedioPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const RemedioPage());
             },
             child: Container(
               decoration: const BoxDecoration(
@@ -107,12 +82,7 @@ class _MainPageState extends State<MainPage> {
     Card(
         child: InkWell(
             onTap: () {
-              PageTransition(
-                child: const RemedioPage(),
-                type: PageTransitionType.scale,
-                alignment: Alignment.center,
-                duration: const Duration(milliseconds: 600),
-              );
+              Get.to(() => const RemedioPage());
             },
             child: Container(
               decoration: const BoxDecoration(

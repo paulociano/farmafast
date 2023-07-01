@@ -169,6 +169,53 @@ class _PedidosPageState extends State<PedidosPage> {
                                     height: 10,
                                   ),
                                   Text(pedido.valor),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Divider(),
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color:
+                                              Color.fromARGB(255, 206, 0, 49),
+                                          width: 3.0,
+                                        ),
+                                      ),
+                                    ),
+                                    child: const SizedBox(
+                                      height: 30,
+                                      width: double.infinity,
+                                      child: Card(
+                                        elevation: 0,
+                                        child: Center(
+                                          child: Text(
+                                            'ORIENTAÇÕES',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 206, 0, 49),
+                                                fontWeight: FontWeight.w700),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      const Icon(Icons.announcement),
+                                      const Text('Orientação Farmacêutico'),
+                                      TextButton(
+                                          onPressed: () {},
+                                          child: const Icon(
+                                            Icons.play_circle_fill,
+                                            color:
+                                                Color.fromARGB(255, 206, 0, 49),
+                                          )),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
