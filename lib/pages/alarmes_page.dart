@@ -1,6 +1,4 @@
-import 'package:farmafast/pages/general_page.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class AlarmePage extends StatefulWidget {
   const AlarmePage({super.key});
@@ -55,10 +53,10 @@ class _AlarmePageState extends State<AlarmePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          PageTransition(
-            child: const GeneralPage(),
-            type: PageTransitionType.bottomToTop,
-            duration: const Duration(milliseconds: 400),
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Cadastro de lembretes em desenvolvimento neste protótipo.'),
+            ),
           );
         },
         backgroundColor: const Color.fromARGB(255, 206, 0, 49),
