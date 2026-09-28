@@ -1,11 +1,10 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:farmafast/pages/config_page.dart';
 import 'package:farmafast/pages/pedidos_page.dart';
 import 'package:farmafast/pages/servicos_page.dart';
+import 'package:farmafast/theme/farmafast_theme.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
 import 'home_page.dart';
+import 'login_page.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
@@ -16,166 +15,137 @@ class GeneralPage extends StatefulWidget {
 
 class _GeneralPageState extends State<GeneralPage> {
   int paginaAtual = 0;
-  late PageController page;
+  final page = PageController();
+  final titles = const ['Início', 'Pedidos', 'Serviços'];
 
   @override
-  void initState() {
-    super.initState();
-    page = PageController(initialPage: paginaAtual);
+  void dispose() {
+    page.dispose();
+    super.dispose();
   }
 
-  setPaginaAtual(pagina) {
-    setState(() {
-      paginaAtual = pagina;
-    });
+  void _setPage(int index) {
+    setState(() => paginaAtual = index);
+    page.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 280),
+      curve: Curves.easeOutCubic,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        )),
-        toolbarHeight: 80,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.people,
-              ), // Ícone do drawer
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-        iconTheme: const IconThemeData(color: Colors.white),
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 206, 0, 49),
-        centerTitle: true,
-        title: Image.asset(
-          'assets/images/logofarmafastbranco.png',
-          height: 40,
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined),
-            onPressed: () {},
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final desktop = constraints.maxWidth >= 900;
+        final content = PageView(
+          controller: page,
+          onPageChanged: (index) => setState(() => paginaAtual = index),
+          children: const [MainPage(), PedidosPage(), ServicosPage()],
+        );
+
+        return Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 72,
+            titleSpacing: 24,
+            title: Row(
+              children: [
+                Image.asset('assets/images/logofarmafast.png', height: 34),
+                if (desktop) ...[
+                  const SizedBox(width: 18),
+                  Container(width: 1, height: 28, color: FarmaFastColors.border),
+                  const SizedBox(width: 18),
+                  Text(titles[paginaAtual]),
+                ],
+              ],
+            ),
+            actions: [
+              IconButton(
+                tooltip: 'Configurações',
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ConfigPage()),
+                ),
+                icon: const Icon(Icons.settings_outlined),
+              ),
+              IconButton(
+                tooltip: 'Carrinho',
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_bag_outlined),
+              ),
+              const SizedBox(width: 12),
+            ],
           ),
-        ],
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 80,
-            ),
-            const CircleAvatar(
-              backgroundColor: Color.fromARGB(255, 206, 0, 49),
-              radius: 60,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (bc) => const ConfigPage()));
-              },
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.settings,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    'CONFIGURAÇÕES',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ],
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
-              },
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.logout,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    'SAIR',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: PageView(
-        onPageChanged: setPaginaAtual,
-        controller: page,
-        children: const [
-          MainPage(),
-          PedidosPage(),
-          ServicosPage(),
-        ],
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        index: paginaAtual,
-        animationCurve: Curves.ease,
-        animationDuration: const Duration(milliseconds: 400),
-        iconPadding: 10,
-        color: const Color.fromARGB(255, 206, 0, 49),
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: const Color.fromARGB(255, 206, 0, 49),
-        onTap: (pagina) {
-          page.animateToPage(pagina,
-              duration: const Duration(milliseconds: 400), curve: Curves.ease);
-        },
-        items: const [
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.home,
-                size: 30,
-                color: Colors.white,
-              ),
-              label: 'Início',
-              labelStyle: TextStyle(color: Colors.white)),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.list,
-                size: 30,
-                color: Colors.white,
-              ),
-              label: 'Pedidos',
-              labelStyle: TextStyle(color: Colors.white)),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.medical_services,
-                size: 30,
-                color: Colors.white,
-              ),
-              label: 'Serviços',
-              labelStyle: TextStyle(color: Colors.white)),
-        ],
-      ),
+          body: desktop
+              ? Row(
+                  children: [
+                    NavigationRail(
+                      selectedIndex: paginaAtual,
+                      onDestinationSelected: _setPage,
+                      labelType: NavigationRailLabelType.all,
+                      minWidth: 96,
+                      backgroundColor: Colors.white,
+                      indicatorColor: FarmaFastColors.soft,
+                      leading: Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: CircleAvatar(
+                          radius: 22,
+                          backgroundColor: FarmaFastColors.soft,
+                          child: const Icon(Icons.person_outline, color: FarmaFastColors.primary),
+                        ),
+                      ),
+                      trailing: Expanded(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: IconButton(
+                              tooltip: 'Sair',
+                              onPressed: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (_) => const LoginPage()),
+                              ),
+                              icon: const Icon(Icons.logout_rounded),
+                            ),
+                          ),
+                        ),
+                      ),
+                      destinations: const [
+                        NavigationRailDestination(
+                          icon: Icon(Icons.home_outlined),
+                          selectedIcon: Icon(Icons.home_rounded),
+                          label: Text('Início'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.receipt_long_outlined),
+                          selectedIcon: Icon(Icons.receipt_long_rounded),
+                          label: Text('Pedidos'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.medical_services_outlined),
+                          selectedIcon: Icon(Icons.medical_services_rounded),
+                          label: Text('Serviços'),
+                        ),
+                      ],
+                    ),
+                    const VerticalDivider(width: 1),
+                    Expanded(child: content),
+                  ],
+                )
+              : content,
+          bottomNavigationBar: desktop
+              ? null
+              : NavigationBar(
+                  selectedIndex: paginaAtual,
+                  onDestinationSelected: _setPage,
+                  destinations: const [
+                    NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home_rounded), label: 'Início'),
+                    NavigationDestination(icon: Icon(Icons.receipt_long_outlined), selectedIcon: Icon(Icons.receipt_long_rounded), label: 'Pedidos'),
+                    NavigationDestination(icon: Icon(Icons.medical_services_outlined), selectedIcon: Icon(Icons.medical_services_rounded), label: 'Serviços'),
+                  ],
+                ),
+        );
+      },
     );
   }
 }
