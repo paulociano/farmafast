@@ -1,7 +1,8 @@
 import 'package:farmafast/pages/general_page.dart';
 import 'package:farmafast/pages/newuser_page.dart';
+import 'package:farmafast/theme/farmafast_theme.dart';
+import 'package:farmafast/widgets/ui.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,211 +12,251 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var emailController = TextEditingController(text: "");
-  var senhaController = TextEditingController(text: "");
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
   bool isObscureText = true;
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 120,
-                ),
-                Row(
-                  children: [
-                    Expanded(child: Container()),
-                    Expanded(
-                      flex: 6,
-                      child: Image.asset(
-                        'assets/images/logofarmafast.png',
-                        height: 127,
-                      ),
-                    ),
-                    Expanded(child: Container()),
-                  ],
-                ),
-                const SizedBox(
-                  height: 60,
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  height: 30,
-                  alignment: Alignment.center,
-                  child: TextField(
-                    controller: emailController,
-                    onChanged: (value) {
-                      debugPrint(value);
-                    },
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 206, 0, 49))),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 206, 0, 49))),
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: Color.fromARGB(255, 206, 0, 49),
-                        )),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  height: 30,
-                  alignment: Alignment.center,
-                  child: TextField(
-                    controller: senhaController,
-                    obscureText: isObscureText,
-                    onChanged: (value) {
-                      debugPrint(value);
-                    },
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.all(8),
-                        enabledBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 206, 0, 49))),
-                        focusedBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 206, 0, 49))),
-                        hintText: "Senha",
-                        hintStyle: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                        prefixIcon: const Icon(
-                          Icons.lock,
-                          color: Color.fromARGB(255, 206, 0, 49),
-                        ),
-                        suffixIcon: InkWell(
-                          onTap: () {
-                            setState(() {
-                              isObscureText = !isObscureText;
-                            });
-                          },
-                          child: Icon(
-                            isObscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: const Color.fromARGB(255, 206, 0, 49),
-                          ),
-                        )),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 30),
-                      height: 30,
-                      alignment: Alignment.center,
-                      child: const Text(
-                        "Esqueci minha senha",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 30),
-                      height: 30,
-                      alignment: Alignment.center,
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const NewUserPage()));
-                          },
-                          child: const Text("Criar conta",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontWeight: FontWeight.w800))),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 120),
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: TextButton(
-                        onPressed: () {
-                          /*if (emailController.text.trim() == "adm" &&
-                              senhaController.text.trim() == "123") {*/
-                          Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                              child: const GeneralPage(),
-                              type: PageTransitionType.scale,
-                              alignment: Alignment.center,
-                              duration: const Duration(milliseconds: 600),
-                            ),
-                          );
-                        },
-                        /* else {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                              content: Text("Erro ao efetuar o login"),
-                              backgroundColor: Color.fromARGB(255, 206, 0, 49),
-                            ));
-                          }*/
+  void dispose() {
+    emailController.dispose();
+    senhaController.dispose();
+    super.dispose();
+  }
 
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20))),
-                            backgroundColor: MaterialStateProperty.all(
-                                const Color.fromARGB(255, 206, 0, 49))),
-                        child: const Text(
-                          "ENTRAR",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600),
-                        )),
-                  ),
+  void _entrar() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const GeneralPage()),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: AppShell(
+        maxWidth: 1040,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final wide = constraints.maxWidth >= 760;
+            return Center(
+              child: Card(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: wide
+                      ? Row(
+                          children: [
+                            const Expanded(child: _BrandPanel()),
+                            Expanded(child: _LoginForm(
+                              emailController: emailController,
+                              senhaController: senhaController,
+                              obscureText: isObscureText,
+                              onTogglePassword: () => setState(() => isObscureText = !isObscureText),
+                              onLogin: _entrar,
+                            )),
+                          ],
+                        )
+                      : Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const _BrandPanel(compact: true),
+                            _LoginForm(
+                              emailController: emailController,
+                              senhaController: senhaController,
+                              obscureText: isObscureText,
+                              onTogglePassword: () => setState(() => isObscureText = !isObscureText),
+                              onLogin: _entrar,
+                            ),
+                          ],
+                        ),
                 ),
-                Card(
-                    elevation: 0.0,
-                    child: InkWell(
-                        child: Container(
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/googlelogin.png'))),
-                      height: 100,
-                      padding: const EdgeInsets.all(5),
-                    ))),
-                Expanded(child: Container()),
-                const SizedBox(
-                  height: 50,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _BrandPanel extends StatelessWidget {
+  final bool compact;
+  const _BrandPanel({this.compact = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      constraints: BoxConstraints(minHeight: compact ? 220 : 620),
+      padding: EdgeInsets.all(compact ? 28 : 48),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [FarmaFastColors.primaryDark, FarmaFastColors.primary],
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset('assets/images/logofarmafastbranco.png', height: compact ? 46 : 62),
+          SizedBox(height: compact ? 20 : 34),
+          Text(
+            'Sua rotina de farmácia, mais simples.',
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: Colors.white,
+              fontSize: compact ? 28 : 38,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            'Descubra farmácias, organize receitas, acompanhe pedidos e centralize serviços em um único lugar.',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: Colors.white.withOpacity(.86),
+              height: 1.55,
+            ),
+          ),
+          if (!compact) ...[
+            const SizedBox(height: 32),
+            const Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: [
+                _FeatureTag(icon: Icons.local_pharmacy_outlined, label: 'Farmácias'),
+                _FeatureTag(icon: Icons.receipt_long_outlined, label: 'Receitas'),
+                _FeatureTag(icon: Icons.notifications_none_rounded, label: 'Lembretes'),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _FeatureTag extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  const _FeatureTag({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(.12),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: Colors.white.withOpacity(.18)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: Colors.white, size: 18),
+          const SizedBox(width: 7),
+          Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+        ],
+      ),
+    );
+  }
+}
+
+class _LoginForm extends StatelessWidget {
+  final TextEditingController emailController;
+  final TextEditingController senhaController;
+  final bool obscureText;
+  final VoidCallback onTogglePassword;
+  final VoidCallback onLogin;
+
+  const _LoginForm({
+    required this.emailController,
+    required this.senhaController,
+    required this.obscureText,
+    required this.onTogglePassword,
+    required this.onLogin,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(36),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 420),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('Bem-vindo de volta', style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: 8),
+            Text(
+              'Entre para continuar sua experiência no FarmaFast.',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 28),
+            TextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                labelText: 'E-mail',
+                prefixIcon: Icon(Icons.mail_outline_rounded),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: senhaController,
+              obscureText: obscureText,
+              onSubmitted: (_) => onLogin(),
+              decoration: InputDecoration(
+                labelText: 'Senha',
+                prefixIcon: const Icon(Icons.lock_outline_rounded),
+                suffixIcon: IconButton(
+                  onPressed: onTogglePassword,
+                  icon: Icon(obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(onPressed: () {}, child: const Text('Esqueci minha senha')),
+            ),
+            const SizedBox(height: 12),
+            FilledButton(onPressed: onLogin, child: const Text('Entrar')),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+                const Expanded(child: Divider()),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Text('ou', style: Theme.of(context).textTheme.bodyMedium),
+                ),
+                const Expanded(child: Divider()),
+              ],
+            ),
+            const SizedBox(height: 18),
+            OutlinedButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.account_circle_outlined),
+              label: const Text('Continuar com Google'),
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size.fromHeight(50),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              ),
+            ),
+            const SizedBox(height: 18),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Ainda não tem conta? ', style: Theme.of(context).textTheme.bodyMedium),
+                TextButton(
+                  onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const NewUserPage()),
+                  ),
+                  child: const Text('Criar conta'),
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );
