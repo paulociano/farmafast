@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'pages/login_page.dart';
+import 'theme/farmafast_theme.dart';
 
 class MyApp extends GetWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -10,17 +10,15 @@ class MyApp extends GetWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'FarmaFast',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('pt', 'BR'),
-      ],
+      supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
+      theme: FarmaFastTheme.light(),
       home: const LoginPage(),
     );
   }
